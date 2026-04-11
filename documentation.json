@@ -505,6 +505,143 @@
             "templateData": "<button\n  [class]=\"cssClass\"\n  [disabled]=\"variant === 'disabled'\"\n  [attr.aria-label]=\"ariaLabel\"\n  type=\"button\"\n>\n  <!-- Spinner: solo visible en estado loading -->\n  <span *ngIf=\"variant === 'loading'\" class=\"btn-icon__spinner\" aria-hidden=\"true\"></span>\n\n  <!-- Ícono arrow-up-right\n       Estructura Figma: contenedor 24×24 (overflow hidden) > vector 12×12\n       currentColor hereda automáticamente el color del estado activo -->\n  <span *ngIf=\"variant !== 'loading'\" class=\"btn-icon__icon\" aria-hidden=\"true\">\n    <span class=\"btn-icon__vector\">\n      <svg\n        width=\"12\"\n        height=\"12\"\n        viewBox=\"0 0 12 12\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path\n          d=\"M1 0L11 4.37114e-07C11.5523 4.61255e-07 12 0.447716 12 1V11C12 11.5523\n             11.5523 12 11 12C10.4477 12 10 11.5523 10 11V3.41406L2.70703\n             10.707C2.31651 11.0976 1.68349 11.0976 1.29297 10.707C0.902444\n             10.3165 0.902444 9.68349 1.29297 9.29297L8.58594 2L1 2C0.447715\n             2 -2.41411e-08 1.55228 0 1C2.41411e-08 0.447715 0.447715\n             -2.41412e-08 1 0Z\"\n          fill=\"currentColor\"\n        />\n      </svg>\n    </span>\n  </span>\n</button>\n"
         },
         {
+            "name": "CheckboxComponent",
+            "id": "component-CheckboxComponent-b426e01f5ad7fbc9f54b7e46a4656d15b4fdba8e0f358fb9e6f923b4e5ba9185897a1d7c7a4ec5dc51b8f802538ded0ca23f387204e793c547aee85eeeb5d3f9",
+            "file": "src/app/components/checkbox/checkbox.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-checkbox",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./checkbox.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "label",
+                    "defaultValue": "'Checkbox'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEtiqueta accesible (aria-label)",
+                    "description": "<p>Etiqueta accesible (aria-label)</p>\n",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEstado visual del checkbox",
+                    "description": "<p>Estado visual del checkbox</p>\n",
+                    "line": 13,
+                    "type": "\"default\" | \"hover\" | \"pressed\" | \"focus\" | \"disabled\"",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "'unselected'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nValor del checkbox",
+                    "description": "<p>Valor del checkbox</p>\n",
+                    "line": 16,
+                    "type": "\"unselected\" | \"selected\" | \"indeterminate\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<'unselected' | 'selected' | 'indeterminate'>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmite cuando el usuario cambia el estado",
+                    "description": "<p>Emite cuando el usuario cambia el estado</p>\n",
+                    "line": 22,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-checkbox',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox.html',\n  styleUrl: './checkbox.css',\n})\nexport class CheckboxComponent {\n  /** Estado visual del checkbox */\n  @Input() state: 'default' | 'hover' | 'pressed' | 'focus' | 'disabled' = 'default';\n\n  /** Valor del checkbox */\n  @Input() value: 'unselected' | 'selected' | 'indeterminate' = 'unselected';\n\n  /** Etiqueta accesible (aria-label) */\n  @Input() label: string = 'Checkbox';\n\n  /** Emite cuando el usuario cambia el estado */\n  @Output() valueChange = new EventEmitter<'unselected' | 'selected' | 'indeterminate'>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isChecked(): boolean {\n    return this.value === 'selected';\n  }\n\n  get isIndeterminate(): boolean {\n    return this.value === 'indeterminate';\n  }\n\n  get hostClass(): string {\n    return [\n      'checkbox',\n      `checkbox--${this.state}`,\n      `checkbox--${this.value}`,\n    ].join(' ');\n  }\n\n  handleChange(): void {\n    if (this.isDisabled) return;\n    const next = this.value === 'selected' ? 'unselected' : 'selected';\n    this.value = next;\n    this.valueChange.emit(next);\n  }\n}\n",
+            "styleUrl": "./checkbox.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "isDisabled": {
+                    "name": "isDisabled",
+                    "getSignature": {
+                        "name": "isDisabled",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 24
+                    }
+                },
+                "isChecked": {
+                    "name": "isChecked",
+                    "getSignature": {
+                        "name": "isChecked",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 28
+                    }
+                },
+                "isIndeterminate": {
+                    "name": "isIndeterminate",
+                    "getSignature": {
+                        "name": "isIndeterminate",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 32
+                    }
+                },
+                "hostClass": {
+                    "name": "hostClass",
+                    "getSignature": {
+                        "name": "hostClass",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 36
+                    }
+                }
+            },
+            "templateData": "<label [class]=\"hostClass\">\n  <!-- Hidden native input for accessibility -->\n  <input\n    class=\"checkbox__input\"\n    type=\"checkbox\"\n    [checked]=\"isChecked\"\n    [indeterminate]=\"isIndeterminate\"\n    [disabled]=\"isDisabled\"\n    [attr.aria-label]=\"label || null\"\n    [attr.aria-checked]=\"isIndeterminate ? 'mixed' : isChecked\"\n    (change)=\"handleChange()\"\n  />\n\n  <!-- State layer (40×40 — hover/pressed background circle) -->\n  <span class=\"checkbox__state-layer\" aria-hidden=\"true\"></span>\n\n  <!-- Focus ring (32×32) -->\n  <span class=\"checkbox__focus-ring\" aria-hidden=\"true\"></span>\n\n  <!-- Control box (24×24) -->\n  <span class=\"checkbox__control\" aria-hidden=\"true\">\n\n    <!-- Check icon — visible when selected -->\n    <span class=\"checkbox__icon checkbox__icon--check\" *ngIf=\"value === 'selected'\">\n      <svg width=\"13\" height=\"11\" viewBox=\"0 0 13.333 10.626\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path\n          d=\"M1 5 L4.778 9.626 L12.333 1\"\n          stroke=\"currentColor\"\n          stroke-width=\"2\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n        />\n      </svg>\n    </span>\n\n    <!-- Minus icon — visible when indeterminate -->\n    <span class=\"checkbox__icon checkbox__icon--indeterminate\" *ngIf=\"value === 'indeterminate'\">\n      <svg width=\"13\" height=\"2\" viewBox=\"0 0 13.333 1.333\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <line\n          x1=\"0.667\"\n          y1=\"0.667\"\n          x2=\"12.667\"\n          y2=\"0.667\"\n          stroke=\"currentColor\"\n          stroke-width=\"2\"\n          stroke-linecap=\"round\"\n        />\n      </svg>\n    </span>\n\n  </span>\n</label>\n"
+        },
+        {
             "name": "HeaderComponent",
             "id": "component-HeaderComponent-48b9abe37706bc42f20cfa97ed9f943678344ea7d254c0c82183c657750c2191b43486fe730c778627b2ea6aa0e2f33a7abcf3ce08b68ad18b062ad99ea97acb",
             "file": "src/stories/header.component.ts",
@@ -878,7 +1015,7 @@
         "children": []
     },
     "coverage": {
-        "count": 27,
+        "count": 30,
         "status": "medium",
         "files": [
             {
@@ -936,6 +1073,15 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/6",
                 "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CheckboxComponent",
+                "coveragePercent": 66,
+                "coverageCount": "4/6",
+                "status": "good"
             },
             {
                 "filePath": "src/app/components/radio-button/radio-button.ts",

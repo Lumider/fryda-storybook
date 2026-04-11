@@ -1,0 +1,223 @@
+/* ─────────────────────────────────────────────────────────────
+   CHECKBOX — FrYDA v3 Design Tokens
+   Anatomy: state-layer (40px) > focus-ring (32px) > control (24px) > icon (16px)
+───────────────────────────────────────────────────────────── */
+
+/* ── Host / wrapper ──────────────────────────────────────── */
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--fry-f-component-checkbox-sizing-width-state-layer, 40px);
+  height: var(--fry-f-component-checkbox-sizing-height-state-layer, 40px);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox--disabled {
+  cursor: not-allowed;
+}
+
+/* ── Hidden native input ──────────────────────────────────── */
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: inherit;
+  z-index: 1;
+}
+
+/* ── State layer (40×40 — hover/pressed circle) ──────────── */
+.checkbox__state-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background-color: transparent;
+  transition: background-color 100ms ease;
+}
+
+/* ── Focus ring (32×32) ──────────────────────────────────── */
+.checkbox__focus-ring {
+  position: absolute;
+  width: var(--fry-f-component-checkbox-sizing-width-focus, 32px);
+  height: var(--fry-f-component-checkbox-sizing-height-focus, 32px);
+  border-radius: var(--fry-f-component-checkbox-border-radius, 4px);
+  border: var(--fry-f-effect-focus-border, 2px) solid transparent;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+/* ── Control box (24×24) ─────────────────────────────────── */
+.checkbox__control {
+  position: relative;
+  width: var(--fry-f-component-checkbox-sizing-width-control, 24px);
+  height: var(--fry-f-component-checkbox-sizing-height-control, 24px);
+  border-radius: var(--fry-f-component-checkbox-border-radius, 4px);
+  border: var(--fry-f-component-checkbox-border-width, 2px) solid transparent;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: background-color 100ms ease, border-color 100ms ease;
+  flex-shrink: 0;
+}
+
+/* ── Icon wrapper ────────────────────────────────────────── */
+.checkbox__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--fry-f-icon-width-s, 16px);
+  height: var(--fry-f-icon-height-s, 16px);
+  color: currentColor;
+  flex-shrink: 0;
+}
+
+.checkbox__icon svg {
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   UNSELECTED STATE
+═══════════════════════════════════════════════════════════ */
+
+/* Default */
+.checkbox--unselected .checkbox__control {
+  border-color: var(--fry-f-color-checkbox-unselected-default-border);
+  background-color: transparent;
+}
+
+/* Hover */
+.checkbox--hover.checkbox--unselected .checkbox__control,
+.checkbox--default.checkbox--unselected:hover .checkbox__control {
+  border-color: var(--fry-f-color-checkbox-unselected-hover-border);
+}
+
+.checkbox--hover.checkbox--unselected .checkbox__state-layer,
+.checkbox--default.checkbox--unselected:hover .checkbox__state-layer {
+  background-color: var(--fry-f-effect-state-layer-neutral-hover);
+}
+
+/* Pressed */
+.checkbox--pressed.checkbox--unselected .checkbox__control,
+.checkbox--default.checkbox--unselected:active .checkbox__control {
+  border-color: var(--fry-f-color-checkbox-unselected-pressed-border);
+}
+
+.checkbox--pressed.checkbox--unselected .checkbox__state-layer,
+.checkbox--default.checkbox--unselected:active .checkbox__state-layer {
+  background-color: var(--fry-f-effect-state-layer-neutral-pressed);
+}
+
+/* Focus */
+.checkbox--focus.checkbox--unselected .checkbox__focus-ring,
+.checkbox--default.checkbox--unselected:focus-within .checkbox__focus-ring {
+  border-color: var(--fry-f-effect-focus-ring);
+}
+
+/* Disabled */
+.checkbox--disabled.checkbox--unselected .checkbox__control {
+  border-color: var(--fry-f-effect-disabled-border);
+  background-color: var(--fry-f-effect-disabled-background);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SELECTED STATE
+═══════════════════════════════════════════════════════════ */
+
+/* Default */
+.checkbox--selected .checkbox__control {
+  background-color: var(--fry-f-color-checkbox-selected-default-background);
+  border-color: transparent;
+  color: var(--fry-f-color-checkbox-selected-default-content);
+}
+
+/* Hover */
+.checkbox--hover.checkbox--selected .checkbox__control,
+.checkbox--default.checkbox--selected:hover .checkbox__control {
+  background-color: var(--fry-f-color-checkbox-selected-hover-background);
+  color: var(--fry-f-color-checkbox-selected-hover-content);
+}
+
+.checkbox--hover.checkbox--selected .checkbox__state-layer,
+.checkbox--default.checkbox--selected:hover .checkbox__state-layer {
+  background-color: var(--fry-f-effect-state-layer-neutral-hover);
+}
+
+/* Pressed */
+.checkbox--pressed.checkbox--selected .checkbox__control,
+.checkbox--default.checkbox--selected:active .checkbox__control {
+  background-color: var(--fry-f-color-checkbox-selected-pressed-background);
+  color: var(--fry-f-color-checkbox-selected-pressed-content);
+}
+
+.checkbox--pressed.checkbox--selected .checkbox__state-layer,
+.checkbox--default.checkbox--selected:active .checkbox__state-layer {
+  background-color: var(--fry-f-effect-state-layer-action-pressed);
+}
+
+/* Focus */
+.checkbox--focus.checkbox--selected .checkbox__focus-ring,
+.checkbox--default.checkbox--selected:focus-within .checkbox__focus-ring {
+  border-color: var(--fry-f-effect-focus-ring);
+}
+
+/* Disabled */
+.checkbox--disabled.checkbox--selected .checkbox__control {
+  background-color: var(--fry-f-effect-disabled-background);
+  border-color: transparent;
+  color: var(--fry-f-effect-disabled-content);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INDETERMINATE STATE
+═══════════════════════════════════════════════════════════ */
+
+/* Default */
+.checkbox--indeterminate .checkbox__control {
+  background-color: var(--fry-f-color-checkbox-indeterminate-default-background);
+  border-color: transparent;
+  color: var(--fry-f-color-checkbox-indeterminate-default-content);
+}
+
+/* Hover */
+.checkbox--hover.checkbox--indeterminate .checkbox__control,
+.checkbox--default.checkbox--indeterminate:hover .checkbox__control {
+  background-color: var(--fry-f-color-checkbox-indeterminate-hover-background);
+  color: var(--fry-f-color-checkbox-indeterminate-hover-content);
+}
+
+.checkbox--hover.checkbox--indeterminate .checkbox__state-layer,
+.checkbox--default.checkbox--indeterminate:hover .checkbox__state-layer {
+  background-color: var(--fry-f-effect-state-layer-neutral-hover);
+}
+
+/* Pressed */
+.checkbox--pressed.checkbox--indeterminate .checkbox__control,
+.checkbox--default.checkbox--indeterminate:active .checkbox__control {
+  background-color: var(--fry-f-color-checkbox-indeterminate-pressed-background);
+  color: var(--fry-f-color-checkbox-indeterminate-pressed-content);
+}
+
+.checkbox--pressed.checkbox--indeterminate .checkbox__state-layer,
+.checkbox--default.checkbox--indeterminate:active .checkbox__state-layer {
+  background-color: var(--fry-f-effect-state-layer-action-pressed);
+}
+
+/* Focus */
+.checkbox--focus.checkbox--indeterminate .checkbox__focus-ring,
+.checkbox--default.checkbox--indeterminate:focus-within .checkbox__focus-ring {
+  border-color: var(--fry-f-effect-focus-ring);
+}
+
+/* Disabled */
+.checkbox--disabled.checkbox--indeterminate .checkbox__control {
+  background-color: var(--fry-f-effect-disabled-background);
+  border-color: transparent;
+  color: var(--fry-f-effect-disabled-content);
+}

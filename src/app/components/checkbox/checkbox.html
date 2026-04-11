@@ -1,0 +1,52 @@
+<label [class]="hostClass">
+  <!-- Hidden native input for accessibility -->
+  <input
+    class="checkbox__input"
+    type="checkbox"
+    [checked]="isChecked"
+    [indeterminate]="isIndeterminate"
+    [disabled]="isDisabled"
+    [attr.aria-label]="label || null"
+    [attr.aria-checked]="isIndeterminate ? 'mixed' : isChecked"
+    (change)="handleChange()"
+  />
+
+  <!-- State layer (40×40 — hover/pressed background circle) -->
+  <span class="checkbox__state-layer" aria-hidden="true"></span>
+
+  <!-- Focus ring (32×32) -->
+  <span class="checkbox__focus-ring" aria-hidden="true"></span>
+
+  <!-- Control box (24×24) -->
+  <span class="checkbox__control" aria-hidden="true">
+
+    <!-- Check icon — visible when selected -->
+    <span class="checkbox__icon checkbox__icon--check" *ngIf="value === 'selected'">
+      <svg width="13" height="11" viewBox="0 0 13.333 10.626" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M1 5 L4.778 9.626 L12.333 1"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+
+    <!-- Minus icon — visible when indeterminate -->
+    <span class="checkbox__icon checkbox__icon--indeterminate" *ngIf="value === 'indeterminate'">
+      <svg width="13" height="2" viewBox="0 0 13.333 1.333" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line
+          x1="0.667"
+          y1="0.667"
+          x2="12.667"
+          y2="0.667"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </span>
+
+  </span>
+</label>
