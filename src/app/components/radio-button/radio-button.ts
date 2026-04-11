@@ -1,36 +1,28 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-radio-button',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './radio-button.html',
   styleUrl: './radio-button.css',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RadioButtonComponent),
-      multi: true,
-    },
-  ],
 })
-export class RadioButtonComponent implements ControlValueAccessor {
+export class RadioButtonComponent {
   /** Estado visual del radio button */
   @Input() state: 'default' | 'hover' | 'pressed' | 'focus' | 'disabled' = 'default';
 
-  /** Valor seleccionado (true = selected) */
+  /** true = Selected, false = Unselected */
   @Input() checked: boolean = false;
 
   /** Nombre del grupo de radio */
   @Input() name: string = 'radio-group';
 
-  /** Etiqueta accesible */
+  /** Etiqueta accesible (aria-label) */
   @Input() label: string = '';
 
-  private onChange: (value: boolean) => void = () => {};
-  private onTouched: () => void = () => {};
+  /** Emite cuando el usuario selecciona este radio */
+  @Output() checkedChange = new EventEmitter<boolean>();
 
   get isDisabled(): boolean {
     return this.state === 'disabled';
@@ -44,26 +36,9 @@ export class RadioButtonComponent implements ControlValueAccessor {
     ].join(' ');
   }
 
-  handleChange(event: Event): void {
+  handleChange(): void {
     if (this.isDisabled) return;
-    this.checked = (event.target as HTMLInputElement).checked;
-    this.onChange(this.checked);
-    this.onTouched();
-  }
-
-  writeValue(value: boolean): void {
-    this.checked = value;
-  }
-
-  registerOnChange(fn: (value: boolean) => void): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    if (isDisabled) this.state = 'disabled';
+    this.checked = true;
+    this.checkedChange.emit(true);
   }
 }

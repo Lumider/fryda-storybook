@@ -1,5 +1,5 @@
 <label [class]="hostClass">
-  <!-- Input nativo oculto — accesibilidad y funcionalidad real -->
+  <!-- Input nativo — mantiene accesibilidad y semántica real -->
   <input
     class="radio__input"
     type="radio"
@@ -7,13 +7,13 @@
     [checked]="checked"
     [disabled]="isDisabled"
     [attr.aria-label]="label || null"
-    (change)="handleChange($event)"
+    (change)="handleChange()"
   />
 
-  <!-- State layer (40×40) — fondo circular en hover/pressed -->
+  <!-- State layer (40×40) — fondo circular en hover / pressed -->
   <span class="radio__state-layer" aria-hidden="true">
 
-    <!-- Control (24×24) — círculo principal con borde -->
+    <!-- Control (24×24) — círculo principal -->
     <span class="radio__control">
 
       <!-- Indicator (12×12) — punto interior cuando está seleccionado -->

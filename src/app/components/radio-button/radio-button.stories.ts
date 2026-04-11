@@ -189,11 +189,11 @@ export const AllStates: Story = {
         <div>
           <p style="font-size:12px; color:#6E727C; margin:0 0 8px; font-family:sans-serif;">UNSELECTED</p>
           <div style="display:flex; align-items:center; gap:8px;">
-            <app-radio-button [checked]="false" state="default"  label="Default"  name="r1" />
-            <app-radio-button [checked]="false" state="hover"    label="Hover"    name="r1" />
-            <app-radio-button [checked]="false" state="pressed"  label="Pressed"  name="r1" />
-            <app-radio-button [checked]="false" state="focus"    label="Focus"    name="r1" />
-            <app-radio-button [checked]="false" state="disabled" label="Disabled" name="r1" />
+            <app-radio-button [checked]="false" state="default"  label="Default"  name="r1"></app-radio-button>
+            <app-radio-button [checked]="false" state="hover"    label="Hover"    name="r1"></app-radio-button>
+            <app-radio-button [checked]="false" state="pressed"  label="Pressed"  name="r1"></app-radio-button>
+            <app-radio-button [checked]="false" state="focus"    label="Focus"    name="r1"></app-radio-button>
+            <app-radio-button [checked]="false" state="disabled" label="Disabled" name="r1"></app-radio-button>
           </div>
         </div>
 
@@ -201,11 +201,11 @@ export const AllStates: Story = {
         <div>
           <p style="font-size:12px; color:#6E727C; margin:0 0 8px; font-family:sans-serif;">SELECTED</p>
           <div style="display:flex; align-items:center; gap:8px;">
-            <app-radio-button [checked]="true" state="default"  label="Default"  name="r2" />
-            <app-radio-button [checked]="true" state="hover"    label="Hover"    name="r2" />
-            <app-radio-button [checked]="true" state="pressed"  label="Pressed"  name="r2" />
-            <app-radio-button [checked]="true" state="focus"    label="Focus"    name="r2" />
-            <app-radio-button [checked]="true" state="disabled" label="Disabled" name="r2" />
+            <app-radio-button [checked]="true" state="default"  label="Default"  name="r2"></app-radio-button>
+            <app-radio-button [checked]="true" state="hover"    label="Hover"    name="r2"></app-radio-button>
+            <app-radio-button [checked]="true" state="pressed"  label="Pressed"  name="r2"></app-radio-button>
+            <app-radio-button [checked]="true" state="focus"    label="Focus"    name="r2"></app-radio-button>
+            <app-radio-button [checked]="true" state="disabled" label="Disabled" name="r2"></app-radio-button>
           </div>
         </div>
 
@@ -234,22 +234,22 @@ export const RadioGroup: Story = {
         <p style="font-size:14px; font-weight:600; margin:0 0 4px;">¿Cuál es tu plan favorito?</p>
 
         <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
-          <app-radio-button [checked]="true"  name="plan" label="Free" />
+          <app-radio-button [checked]="true"  name="plan" label="Free"></app-radio-button>
           <span style="font-size:14px;">Free</span>
         </label>
 
         <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
-          <app-radio-button [checked]="false" name="plan" label="Pro" />
+          <app-radio-button [checked]="false" name="plan" label="Pro"></app-radio-button>
           <span style="font-size:14px;">Pro</span>
         </label>
 
         <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
-          <app-radio-button [checked]="false" name="plan" label="Enterprise" />
+          <app-radio-button [checked]="false" name="plan" label="Enterprise"></app-radio-button>
           <span style="font-size:14px;">Enterprise</span>
         </label>
 
         <label style="display:flex; align-items:center; gap:12px; cursor:pointer; opacity:0.5;">
-          <app-radio-button [checked]="false" state="disabled" name="plan" label="Legacy (no disponible)" />
+          <app-radio-button [checked]="false" state="disabled" name="plan" label="Legacy (no disponible)"></app-radio-button>
           <span style="font-size:14px; color:#9CA3AF;">Legacy (no disponible)</span>
         </label>
       </div>
