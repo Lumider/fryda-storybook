@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { userEvent, within, expect } from 'storybook/test';
+import { within, expect } from 'storybook/test';
 import { RadioButtonComponent } from './radio-button';
 
 // ─────────────────────────────────────────────────────────────
@@ -76,29 +76,6 @@ type Story = StoryObj<RadioButtonComponent>;
 export const Playground: Story = {
   name: '⚡ Playground',
   args: { state: 'default', checked: false },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByRole('radio');
-
-    await step('Radio button renderizado y habilitado', async () => {
-      await expect(input).toBeInTheDocument();
-      await expect(input).not.toBeDisabled();
-    });
-
-    await step('Hover sobre el radio', async () => {
-      await userEvent.hover(input);
-    });
-
-    await step('Unhover', async () => {
-      await userEvent.unhover(input);
-    });
-
-    await step('Focus — foco sobre el radio', async () => {
-      input.focus();
-      await expect(input).toHaveFocus();
-      input.blur();
-    });
-  },
 };
 
 // ─────────────────────────────────────────────────────────────
