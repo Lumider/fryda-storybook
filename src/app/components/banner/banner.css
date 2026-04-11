@@ -1,0 +1,110 @@
+/* =============================================================
+   BASE — Banner
+   Estructura: borde izquierdo de 4px + fondo + texto semibold
+   ============================================================= */
+
+.banner {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--fry-f-component-banner-margin-top)
+           var(--fry-f-component-banner-margin-right)
+           var(--fry-f-component-banner-margin-bottom)
+           var(--fry-f-component-banner-margin-left);
+  border-radius: var(--fry-f-component-banner-border-radius);
+  border-left: var(--fry-f-component-banner-border-width) solid transparent;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Contenedor de texto — ocupa todo el ancho disponible */
+.banner__texts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* Texto del banner */
+.banner__text {
+  margin: 0;
+  font-size: var(--fry-f-component-banner-font-size);
+  line-height: var(--fry-f-component-banner-font-line-height);
+  font-weight: 600;
+  font-family: sans-serif;
+  letter-spacing: var(--fry-f-text-style-letter-spacing);
+  width: 100%;
+}
+
+
+/* =============================================================
+   INTENT: WARNING  🟠
+   ============================================================= */
+
+.banner--warning {
+  background-color: var(--fry-f-color-banner-warning-background);
+  border-left-color: var(--fry-f-color-banner-warning-border);
+}
+
+.banner--warning .banner__text {
+  color: var(--fry-f-color-banner-warning-content);
+}
+
+
+/* =============================================================
+   INTENT: NEUTRAL  ⚫
+   ============================================================= */
+
+.banner--neutral {
+  background-color: var(--fry-f-color-banner-neutral-background);
+  border-left-color: var(--fry-f-color-banner-neutral-border);
+}
+
+.banner--neutral .banner__text {
+  color: var(--fry-f-color-banner-neutral-text);
+}
+
+
+/* =============================================================
+   INTENT: ERROR  🔴
+   Token: danger (nombre en el sistema de diseño)
+   ============================================================= */
+
+.banner--error {
+  background-color: var(--fry-f-color-banner-danger-background);
+  border-left-color: var(--fry-f-color-banner-danger-border);
+}
+
+.banner--error .banner__text {
+  color: var(--fry-f-color-banner-danger-content);
+}
+
+
+/* =============================================================
+   INTENT: INFO  🔵
+   ============================================================= */
+
+.banner--info {
+  background-color: var(--fry-f-color-banner-info-background);
+  border-left-color: var(--fry-f-color-banner-info-border);
+}
+
+.banner--info .banner__text {
+  color: var(--fry-f-color-banner-info-content);
+}
+
+
+/* =============================================================
+   INTENT: SUCCESS  🟢
+   ============================================================= */
+
+.banner--success {
+  background-color: var(--fry-f-color-banner-success-background);
+  border-left-color: var(--fry-f-color-banner-success-border);
+}
+
+.banner--success .banner__text {
+  color: var(--fry-f-color-banner-success-content);
+}

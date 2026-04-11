@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "storybook": "ng run mi-storybook:storybook",
+    "build-storybook": "ng run mi-storybook:build-storybook",
+    "chromatic": "npx chromatic --project-token=chpt_9a6a43eff74a7f4"
   },
   "private": true,
   "packageManager": "npm@11.12.1",
@@ -21,11 +24,24 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-devkit/architect": "^0.2102.0",
+    "@angular-devkit/build-angular": "^21.2.0",
+    "@angular-devkit/core": "^21.2.0",
     "@angular/build": "^21.2.7",
     "@angular/cli": "^21.2.7",
     "@angular/compiler-cli": "^21.2.0",
+    "@angular/platform-browser-dynamic": "^21.2.0",
+    "@compodoc/compodoc": "^1.2.1",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-onboarding": "^10.3.5",
+    "@storybook/angular": "^10.3.5",
+    "@storybook/test": "^8.6.15",
+    "chromatic": "^16.2.0",
     "jsdom": "^28.0.0",
     "prettier": "^3.8.1",
+    "storybook": "^10.3.5",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
   }

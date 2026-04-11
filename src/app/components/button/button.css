@@ -1,0 +1,423 @@
+/* =============================================================
+   BASE — Estilos compartidos por todos los botones
+   ============================================================= */
+
+.btn {
+  display: inline-flex;
+  padding: var(--fry-f-component-button-margin-top)
+           var(--fry-f-component-button-margin-margin-right-text)
+           var(--fry-f-component-button-margin-bottom)
+           var(--fry-f-component-button-margin-margin-left-text);
+  justify-content: center;
+  align-items: center;
+  gap: var(--fry-f-component-button-margin-gap);
+  border-radius: var(--fry-f-component-button-border-radius);
+  border: none;
+  cursor: pointer;
+  font-size: var(--fry-f-component-button-font-size);
+  line-height: var(--fry-f-component-button-font-line-height);
+  font-family: sans-serif;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  outline: none;
+  outline-offset: 2px;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+/* Focus ring accesible — teclado */
+.btn:focus-visible {
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+
+/* =============================================================
+   PRIMARY — Mode: Default
+   Clases estáticas (.btn-hover, .btn-pressed…) → documentación
+   Pseudo-clases (:hover, :active) → interacción real en Canvas
+   ============================================================= */
+
+.btn-primary.btn-default,
+.btn-primary.btn-loading {
+  background-color: var(--fry-f-color-button-primary-default-default-background);
+  color: var(--fry-f-color-button-primary-default-default-content);
+}
+
+.btn-primary.btn-hover,
+.btn-primary.btn-default:hover {
+  background-color: var(--fry-f-color-button-primary-default-hover-background);
+  color: var(--fry-f-color-button-primary-default-hover-content);
+}
+
+.btn-primary.btn-pressed,
+.btn-primary.btn-default:active {
+  background-color: var(--fry-f-color-button-primary-default-pressed-background);
+  color: var(--fry-f-color-button-primary-default-pressed-content);
+}
+
+.btn-primary.btn-focus {
+  background-color: var(--fry-f-color-button-primary-default-default-background);
+  color: var(--fry-f-color-button-primary-default-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-primary.btn-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary.btn-loading {
+  cursor: wait;
+}
+
+/* PRIMARY — Mode: Inverse */
+
+.btn-primary.btn-inverse.btn-default,
+.btn-primary.btn-inverse.btn-loading {
+  background-color: var(--fry-f-color-button-primary-inverse-default-background);
+  color: var(--fry-f-color-button-primary-inverse-default-content);
+}
+
+.btn-primary.btn-inverse.btn-hover,
+.btn-primary.btn-inverse.btn-default:hover {
+  background-color: var(--fry-f-color-button-primary-inverse-hover-background);
+  color: var(--fry-f-color-button-primary-inverse-hover-content);
+}
+
+.btn-primary.btn-inverse.btn-pressed,
+.btn-primary.btn-inverse.btn-default:active {
+  background-color: var(--fry-f-color-button-primary-inverse-pressed-background);
+  color: var(--fry-f-color-button-primary-inverse-pressed-content);
+}
+
+.btn-primary.btn-inverse.btn-focus {
+  background-color: var(--fry-f-color-button-primary-inverse-default-background);
+  color: var(--fry-f-color-button-primary-inverse-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-primary.btn-inverse.btn-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary.btn-inverse.btn-loading {
+  cursor: wait;
+}
+
+
+/* =============================================================
+   SECONDARY — Mode: Default
+   ============================================================= */
+
+.btn-secondary {
+  border: var(--fry-f-component-button-border-width) solid transparent;
+}
+
+.btn-secondary.btn-default,
+.btn-secondary.btn-loading {
+  background-color: var(--fry-f-color-button-secondary-default-default-background);
+  color: var(--fry-f-color-button-secondary-default-default-content);
+  border-color: var(--fry-f-color-button-secondary-default-default-border);
+}
+
+.btn-secondary.btn-hover,
+.btn-secondary.btn-default:hover {
+  background-color: var(--fry-f-color-button-secondary-default-hover-background);
+  color: var(--fry-f-color-button-secondary-default-hover-content);
+  border-color: var(--fry-f-color-button-secondary-default-hover-border);
+}
+
+.btn-secondary.btn-pressed,
+.btn-secondary.btn-default:active {
+  background-color: var(--fry-f-color-button-secondary-default-pressed-background);
+  color: var(--fry-f-color-button-secondary-default-pressed-content);
+  border-color: var(--fry-f-color-button-secondary-default-pressed-border);
+}
+
+.btn-secondary.btn-focus {
+  background-color: var(--fry-f-color-button-secondary-default-default-background);
+  color: var(--fry-f-color-button-secondary-default-default-content);
+  border-color: var(--fry-f-color-button-secondary-default-default-border);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-secondary.btn-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  border-color: var(--fry-f-effect-disabled-border);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-secondary.btn-loading {
+  cursor: wait;
+}
+
+/* SECONDARY — Mode: Inverse */
+
+.btn-secondary.btn-inverse.btn-default,
+.btn-secondary.btn-inverse.btn-loading {
+  background-color: var(--fry-f-color-button-secondary-inverse-default-background);
+  color: var(--fry-f-color-button-secondary-inverse-default-content);
+  border-color: var(--fry-f-color-button-secondary-inverse-default-border);
+}
+
+.btn-secondary.btn-inverse.btn-hover,
+.btn-secondary.btn-inverse.btn-default:hover {
+  background-color: var(--fry-f-color-button-secondary-inverse-hover-background);
+  color: var(--fry-f-color-button-secondary-inverse-hover-content);
+  border-color: var(--fry-f-color-button-secondary-inverse-hover-border);
+}
+
+.btn-secondary.btn-inverse.btn-pressed,
+.btn-secondary.btn-inverse.btn-default:active {
+  background-color: var(--fry-f-color-button-secondary-inverse-pressed-background);
+  color: var(--fry-f-color-button-secondary-inverse-pressed-content);
+  border-color: var(--fry-f-color-button-secondary-inverse-pressed-border);
+}
+
+.btn-secondary.btn-inverse.btn-focus {
+  background-color: var(--fry-f-color-button-secondary-inverse-default-background);
+  color: var(--fry-f-color-button-secondary-inverse-default-content);
+  border-color: var(--fry-f-color-button-secondary-inverse-default-border);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-secondary.btn-inverse.btn-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  border-color: var(--fry-f-effect-disabled-border);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-secondary.btn-inverse.btn-loading {
+  cursor: wait;
+}
+
+
+/* =============================================================
+   GHOST — Mode: Default
+   ============================================================= */
+
+.btn-ghost.btn-default,
+.btn-ghost.btn-loading {
+  background-color: transparent;
+  color: var(--fry-f-color-button-ghost-default-default-content);
+}
+
+.btn-ghost.btn-hover,
+.btn-ghost.btn-default:hover {
+  background-color: var(--fry-f-color-button-ghost-default-hover-background);
+  color: var(--fry-f-color-button-ghost-default-hover-content);
+}
+
+.btn-ghost.btn-pressed,
+.btn-ghost.btn-default:active {
+  background-color: var(--fry-f-color-button-ghost-default-pressed-background);
+  color: var(--fry-f-color-button-ghost-default-pressed-content);
+}
+
+.btn-ghost.btn-focus {
+  background-color: transparent;
+  color: var(--fry-f-color-button-ghost-default-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-ghost.btn-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-ghost.btn-loading {
+  cursor: wait;
+}
+
+/* GHOST — Mode: Inverse */
+
+.btn-ghost.btn-inverse.btn-default,
+.btn-ghost.btn-inverse.btn-loading {
+  background-color: transparent;
+  color: var(--fry-f-color-button-ghost-inverse-default-content);
+}
+
+.btn-ghost.btn-inverse.btn-hover,
+.btn-ghost.btn-inverse.btn-default:hover {
+  background-color: var(--fry-f-color-button-ghost-inverse-hover-background);
+  color: var(--fry-f-color-button-ghost-inverse-hover-content);
+}
+
+.btn-ghost.btn-inverse.btn-pressed,
+.btn-ghost.btn-inverse.btn-default:active {
+  background-color: var(--fry-f-color-button-ghost-inverse-pressed-background);
+  color: var(--fry-f-color-button-ghost-inverse-pressed-content);
+}
+
+.btn-ghost.btn-inverse.btn-focus {
+  background-color: transparent;
+  color: var(--fry-f-color-button-ghost-inverse-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-ghost.btn-inverse.btn-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-ghost.btn-inverse.btn-loading {
+  cursor: wait;
+}
+
+
+/* =============================================================
+   LINK — Sin padding lateral, sin fondo
+   ============================================================= */
+
+.btn-link {
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+  border-radius: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn-link.btn-default,
+.btn-link.btn-loading {
+  color: var(--fry-f-color-button-link-default-default-content);
+}
+
+.btn-link.btn-hover,
+.btn-link.btn-default:hover {
+  color: var(--fry-f-color-button-link-default-hover-content);
+}
+
+.btn-link.btn-pressed,
+.btn-link.btn-default:active {
+  color: var(--fry-f-color-button-link-default-pressed-content);
+}
+
+.btn-link.btn-focus {
+  color: var(--fry-f-color-button-link-default-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-link.btn-disabled {
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-link.btn-loading {
+  cursor: wait;
+}
+
+/* LINK — Mode: Inverse */
+
+.btn-link.btn-inverse.btn-default,
+.btn-link.btn-inverse.btn-loading {
+  color: var(--fry-f-color-button-link-inverse-default-content);
+}
+
+.btn-link.btn-inverse.btn-hover,
+.btn-link.btn-inverse.btn-default:hover {
+  color: var(--fry-f-color-button-link-inverse-hover-content);
+}
+
+.btn-link.btn-inverse.btn-pressed,
+.btn-link.btn-inverse.btn-default:active {
+  color: var(--fry-f-color-button-link-inverse-pressed-content);
+}
+
+.btn-link.btn-inverse.btn-focus {
+  color: var(--fry-f-color-button-link-inverse-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-link.btn-inverse.btn-disabled {
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-link.btn-inverse.btn-loading {
+  cursor: wait;
+}
+
+
+/* =============================================================
+   DESTRUCTIVE
+   ============================================================= */
+
+.btn-destructive.btn-default,
+.btn-destructive.btn-loading {
+  background-color: var(--fry-f-color-button-destructive-default-background);
+  color: var(--fry-f-color-button-destructive-default-content);
+}
+
+.btn-destructive.btn-hover,
+.btn-destructive.btn-default:hover {
+  background-color: var(--fry-f-color-button-destructive-hover-background);
+  color: var(--fry-f-color-button-destructive-hover-content);
+}
+
+.btn-destructive.btn-pressed,
+.btn-destructive.btn-default:active {
+  background-color: var(--fry-f-color-button-destructive-pressed-background);
+  color: var(--fry-f-color-button-destructive-pressed-content);
+}
+
+.btn-destructive.btn-focus {
+  background-color: var(--fry-f-color-button-destructive-default-background);
+  color: var(--fry-f-color-button-destructive-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-destructive.btn-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-destructive.btn-loading {
+  cursor: wait;
+}
+
+
+/* =============================================================
+   SPINNER — Estado loading
+   ============================================================= */
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

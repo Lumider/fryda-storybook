@@ -1,0 +1,4 @@
+<button [class]="cssClass" [disabled]="variant === 'disabled'">
+  <span *ngIf="variant === 'loading'" class="spinner"></span>
+  <span>{{ label }}</span>
+</button>

@@ -1,0 +1,424 @@
+/* =============================================================
+   BASE — Botón circular de solo ícono
+   Padding icon: 12px · Ícono: 24px · Total: 48×48px
+   ============================================================= */
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--fry-f-component-button-margin-top)
+           var(--fry-f-component-button-margin-margin-right-icon)
+           var(--fry-f-component-button-margin-bottom)
+           var(--fry-f-component-button-margin-margin-left-icon);
+  border-radius: var(--fry-f-component-button-border-radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  outline: none;
+  outline-offset: 2px;
+  box-shadow: none;
+  flex-shrink: 0;
+}
+
+/* Focus ring accesible — teclado */
+.btn-icon:focus-visible {
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Contenedor del ícono: 24×24px — igual que Figma (arrow-up-right instance) */
+.btn-icon__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Vector interno: 12×12px — el path SVG real de Figma */
+.btn-icon__vector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* Spinner loading */
+.btn-icon__spinner {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: btn-icon-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes btn-icon-spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* =============================================================
+   PRIMARY — Mode: Default
+   ============================================================= */
+
+.btn-icon-primary.btn-icon-default,
+.btn-icon-primary.btn-icon-loading {
+  background-color: var(--fry-f-color-button-primary-default-default-background);
+  color: var(--fry-f-color-button-primary-default-default-content);
+}
+
+.btn-icon-primary.btn-icon-hover,
+.btn-icon-primary.btn-icon-default:hover {
+  background-color: var(--fry-f-color-button-primary-default-hover-background);
+  color: var(--fry-f-color-button-primary-default-hover-content);
+}
+
+.btn-icon-primary.btn-icon-pressed,
+.btn-icon-primary.btn-icon-default:active {
+  background-color: var(--fry-f-color-button-primary-default-pressed-background);
+  color: var(--fry-f-color-button-primary-default-pressed-content);
+}
+
+.btn-icon-primary.btn-icon-focus {
+  background-color: var(--fry-f-color-button-primary-default-default-background);
+  color: var(--fry-f-color-button-primary-default-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-primary.btn-icon-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-primary.btn-icon-loading { cursor: wait; }
+
+/* PRIMARY — Inverse */
+
+.btn-icon-primary.btn-icon-inverse.btn-icon-default,
+.btn-icon-primary.btn-icon-inverse.btn-icon-loading {
+  background-color: var(--fry-f-color-button-primary-inverse-default-background);
+  color: var(--fry-f-color-button-primary-inverse-default-content);
+}
+
+.btn-icon-primary.btn-icon-inverse.btn-icon-hover,
+.btn-icon-primary.btn-icon-inverse.btn-icon-default:hover {
+  background-color: var(--fry-f-color-button-primary-inverse-hover-background);
+  color: var(--fry-f-color-button-primary-inverse-hover-content);
+}
+
+.btn-icon-primary.btn-icon-inverse.btn-icon-pressed,
+.btn-icon-primary.btn-icon-inverse.btn-icon-default:active {
+  background-color: var(--fry-f-color-button-primary-inverse-pressed-background);
+  color: var(--fry-f-color-button-primary-inverse-pressed-content);
+}
+
+.btn-icon-primary.btn-icon-inverse.btn-icon-focus {
+  background-color: var(--fry-f-color-button-primary-inverse-default-background);
+  color: var(--fry-f-color-button-primary-inverse-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-primary.btn-icon-inverse.btn-icon-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-primary.btn-icon-inverse.btn-icon-loading { cursor: wait; }
+
+
+/* =============================================================
+   SECONDARY — Mode: Default
+   ============================================================= */
+
+.btn-icon-secondary {
+  border: var(--fry-f-component-button-border-width) solid transparent;
+}
+
+.btn-icon-secondary.btn-icon-default,
+.btn-icon-secondary.btn-icon-loading {
+  background-color: var(--fry-f-color-button-secondary-default-default-background);
+  color: var(--fry-f-color-button-secondary-default-default-content);
+  border-color: var(--fry-f-color-button-secondary-default-default-border);
+}
+
+.btn-icon-secondary.btn-icon-hover,
+.btn-icon-secondary.btn-icon-default:hover {
+  background-color: var(--fry-f-color-button-secondary-default-hover-background);
+  color: var(--fry-f-color-button-secondary-default-hover-content);
+  border-color: var(--fry-f-color-button-secondary-default-hover-border);
+}
+
+.btn-icon-secondary.btn-icon-pressed,
+.btn-icon-secondary.btn-icon-default:active {
+  background-color: var(--fry-f-color-button-secondary-default-pressed-background);
+  color: var(--fry-f-color-button-secondary-default-pressed-content);
+  border-color: var(--fry-f-color-button-secondary-default-pressed-border);
+}
+
+.btn-icon-secondary.btn-icon-focus {
+  background-color: var(--fry-f-color-button-secondary-default-default-background);
+  color: var(--fry-f-color-button-secondary-default-default-content);
+  border-color: var(--fry-f-color-button-secondary-default-default-border);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-secondary.btn-icon-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  border-color: var(--fry-f-effect-disabled-border);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-secondary.btn-icon-loading { cursor: wait; }
+
+/* SECONDARY — Inverse */
+
+.btn-icon-secondary.btn-icon-inverse.btn-icon-default,
+.btn-icon-secondary.btn-icon-inverse.btn-icon-loading {
+  background-color: var(--fry-f-color-button-secondary-inverse-default-background);
+  color: var(--fry-f-color-button-secondary-inverse-default-content);
+  border-color: var(--fry-f-color-button-secondary-inverse-default-border);
+}
+
+.btn-icon-secondary.btn-icon-inverse.btn-icon-hover,
+.btn-icon-secondary.btn-icon-inverse.btn-icon-default:hover {
+  background-color: var(--fry-f-color-button-secondary-inverse-hover-background);
+  color: var(--fry-f-color-button-secondary-inverse-hover-content);
+  border-color: var(--fry-f-color-button-secondary-inverse-hover-border);
+}
+
+.btn-icon-secondary.btn-icon-inverse.btn-icon-pressed,
+.btn-icon-secondary.btn-icon-inverse.btn-icon-default:active {
+  background-color: var(--fry-f-color-button-secondary-inverse-pressed-background);
+  color: var(--fry-f-color-button-secondary-inverse-pressed-content);
+  border-color: var(--fry-f-color-button-secondary-inverse-pressed-border);
+}
+
+.btn-icon-secondary.btn-icon-inverse.btn-icon-focus {
+  background-color: var(--fry-f-color-button-secondary-inverse-default-background);
+  color: var(--fry-f-color-button-secondary-inverse-default-content);
+  border-color: var(--fry-f-color-button-secondary-inverse-default-border);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-secondary.btn-icon-inverse.btn-icon-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  border-color: var(--fry-f-effect-disabled-border);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-secondary.btn-icon-inverse.btn-icon-loading { cursor: wait; }
+
+
+/* =============================================================
+   GHOST — Mode: Default
+   ============================================================= */
+
+.btn-icon-ghost.btn-icon-default,
+.btn-icon-ghost.btn-icon-loading {
+  background-color: transparent;
+  color: var(--fry-f-color-button-ghost-default-default-content);
+}
+
+.btn-icon-ghost.btn-icon-hover,
+.btn-icon-ghost.btn-icon-default:hover {
+  background-color: var(--fry-f-color-button-ghost-default-hover-background);
+  color: var(--fry-f-color-button-ghost-default-hover-content);
+}
+
+.btn-icon-ghost.btn-icon-pressed,
+.btn-icon-ghost.btn-icon-default:active {
+  background-color: var(--fry-f-color-button-ghost-default-pressed-background);
+  color: var(--fry-f-color-button-ghost-default-pressed-content);
+}
+
+.btn-icon-ghost.btn-icon-focus {
+  background-color: transparent;
+  color: var(--fry-f-color-button-ghost-default-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-ghost.btn-icon-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-ghost.btn-icon-loading { cursor: wait; }
+
+/* GHOST — Inverse */
+
+.btn-icon-ghost.btn-icon-inverse.btn-icon-default,
+.btn-icon-ghost.btn-icon-inverse.btn-icon-loading {
+  background-color: transparent;
+  color: var(--fry-f-color-button-ghost-inverse-default-content);
+}
+
+.btn-icon-ghost.btn-icon-inverse.btn-icon-hover,
+.btn-icon-ghost.btn-icon-inverse.btn-icon-default:hover {
+  background-color: var(--fry-f-color-button-ghost-inverse-hover-background);
+  color: var(--fry-f-color-button-ghost-inverse-hover-content);
+}
+
+.btn-icon-ghost.btn-icon-inverse.btn-icon-pressed,
+.btn-icon-ghost.btn-icon-inverse.btn-icon-default:active {
+  background-color: var(--fry-f-color-button-ghost-inverse-pressed-background);
+  color: var(--fry-f-color-button-ghost-inverse-pressed-content);
+}
+
+.btn-icon-ghost.btn-icon-inverse.btn-icon-focus {
+  background-color: transparent;
+  color: var(--fry-f-color-button-ghost-inverse-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-ghost.btn-icon-inverse.btn-icon-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-ghost.btn-icon-inverse.btn-icon-loading { cursor: wait; }
+
+
+/* =============================================================
+   LINK — Sin fondo, sin borde
+   ============================================================= */
+
+.btn-icon-link.btn-icon-default,
+.btn-icon-link.btn-icon-loading {
+  background-color: transparent;
+  color: var(--fry-f-color-button-link-default-default-content);
+}
+
+.btn-icon-link.btn-icon-hover,
+.btn-icon-link.btn-icon-default:hover {
+  background-color: transparent;
+  color: var(--fry-f-color-button-link-default-hover-content);
+}
+
+.btn-icon-link.btn-icon-pressed,
+.btn-icon-link.btn-icon-default:active {
+  background-color: transparent;
+  color: var(--fry-f-color-button-link-default-pressed-content);
+}
+
+.btn-icon-link.btn-icon-focus {
+  background-color: transparent;
+  color: var(--fry-f-color-button-link-default-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-link.btn-icon-disabled {
+  background-color: transparent;
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-link.btn-icon-loading { cursor: wait; }
+
+/* LINK — Inverse */
+
+.btn-icon-link.btn-icon-inverse.btn-icon-default,
+.btn-icon-link.btn-icon-inverse.btn-icon-loading {
+  background-color: transparent;
+  color: var(--fry-f-color-button-link-inverse-default-content);
+}
+
+.btn-icon-link.btn-icon-inverse.btn-icon-hover,
+.btn-icon-link.btn-icon-inverse.btn-icon-default:hover {
+  background-color: transparent;
+  color: var(--fry-f-color-button-link-inverse-hover-content);
+}
+
+.btn-icon-link.btn-icon-inverse.btn-icon-pressed,
+.btn-icon-link.btn-icon-inverse.btn-icon-default:active {
+  background-color: transparent;
+  color: var(--fry-f-color-button-link-inverse-pressed-content);
+}
+
+.btn-icon-link.btn-icon-inverse.btn-icon-focus {
+  background-color: transparent;
+  color: var(--fry-f-color-button-link-inverse-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-link.btn-icon-inverse.btn-icon-disabled {
+  background-color: transparent;
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-link.btn-icon-inverse.btn-icon-loading { cursor: wait; }
+
+
+/* =============================================================
+   DESTRUCTIVE
+   ============================================================= */
+
+.btn-icon-destructive.btn-icon-default,
+.btn-icon-destructive.btn-icon-loading {
+  background-color: var(--fry-f-color-button-destructive-default-background);
+  color: var(--fry-f-color-button-destructive-default-content);
+}
+
+.btn-icon-destructive.btn-icon-hover,
+.btn-icon-destructive.btn-icon-default:hover {
+  background-color: var(--fry-f-color-button-destructive-hover-background);
+  color: var(--fry-f-color-button-destructive-hover-content);
+}
+
+.btn-icon-destructive.btn-icon-pressed,
+.btn-icon-destructive.btn-icon-default:active {
+  background-color: var(--fry-f-color-button-destructive-pressed-background);
+  color: var(--fry-f-color-button-destructive-pressed-content);
+}
+
+.btn-icon-destructive.btn-icon-focus {
+  background-color: var(--fry-f-color-button-destructive-default-background);
+  color: var(--fry-f-color-button-destructive-default-content);
+  outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-destructive.btn-icon-disabled {
+  background-color: var(--fry-f-effect-disabled-background);
+  color: var(--fry-f-effect-disabled-content);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-icon-destructive.btn-icon-loading { cursor: wait; }
