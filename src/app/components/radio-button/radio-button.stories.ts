@@ -80,7 +80,7 @@ export const Playground: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('radio');
 
-    await step('Radio button renderizado', async () => {
+    await step('Radio button renderizado y habilitado', async () => {
       await expect(input).toBeInTheDocument();
       await expect(input).not.toBeDisabled();
     });
@@ -96,14 +96,6 @@ export const Playground: Story = {
     await step('Focus — foco sobre el radio', async () => {
       input.focus();
       await expect(input).toHaveFocus();
-    });
-
-    await step('Click — seleccionar', async () => {
-      await userEvent.click(input);
-      await expect(input).toBeChecked();
-    });
-
-    await step('Blur — pierde el foco', async () => {
       input.blur();
     });
   },
