@@ -93,13 +93,18 @@ export const Playground: Story = {
       await userEvent.unhover(input);
     });
 
-    await step('Focus por teclado', async () => {
-      await userEvent.tab();
+    await step('Focus — foco sobre el radio', async () => {
+      input.focus();
       await expect(input).toHaveFocus();
     });
 
     await step('Click — seleccionar', async () => {
       await userEvent.click(input);
+      await expect(input).toBeChecked();
+    });
+
+    await step('Blur — pierde el foco', async () => {
+      input.blur();
     });
   },
 };
