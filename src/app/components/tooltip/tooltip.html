@@ -1,0 +1,44 @@
+<div [class]="hostClass" role="tooltip">
+
+  <!-- Arrow / Caret — inline SVG -->
+  <span [class]="arrowClass" aria-hidden="true">
+    <svg class="tooltip__arrow-img" viewBox="0 0 14 7.74236" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M14 0H0L5.4213 6.97024C6.22201 7.99973 7.77799 7.99973 8.5787 6.97024L14 0Z" fill="var(--fry-f-color-tooltip-background, #1C1F28)"/>
+    </svg>
+  </span>
+
+  <!-- Close button — reutiliza app-button-icon -->
+  <div *ngIf="showClose" class="tooltip__close-wrapper">
+    <app-button-icon
+      hierarchy="ghost"
+      mode="inverse"
+      icon="close"
+      [ariaLabel]="'Cerrar tooltip'"
+      (click)="onClose()"
+    ></app-button-icon>
+  </div>
+
+  <!-- Content -->
+  <div class="tooltip__content">
+    <p *ngIf="showTitle" class="tooltip__title">{{ title }}</p>
+    <p class="tooltip__description">{{ description }}</p>
+  </div>
+
+  <!-- Button group — reutiliza app-button -->
+  <div *ngIf="showButtonGroup" class="tooltip__button-group">
+    <app-button
+      *ngIf="showButtonSecondary"
+      hierarchy="secondary"
+      mode="inverse"
+      [label]="secondaryLabel"
+      (click)="secondaryClick.emit()"
+    ></app-button>
+    <app-button
+      hierarchy="primary"
+      mode="inverse"
+      [label]="primaryLabel"
+      (click)="primaryClick.emit()"
+    ></app-button>
+  </div>
+
+</div>

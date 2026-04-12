@@ -21,6 +21,9 @@ export class ButtonIconComponent {
   /** Etiqueta accesible obligatoria para lectores de pantalla */
   @Input() ariaLabel: string = 'Ir al enlace';
 
+  /** Icono a mostrar */
+  @Input() icon: 'arrow' | 'close' = 'arrow';
+
   get cssClass(): string {
     return [
       'btn-icon',

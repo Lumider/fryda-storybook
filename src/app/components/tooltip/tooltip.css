@@ -1,0 +1,201 @@
+/* ─────────────────────────────────────────────────────────────
+   TOOLTIP — FrYDA v3 Design Tokens
+   Anatomy: arrow (9px caret) + close (X) + content + button-group
+───────────────────────────────────────────────────────────── */
+
+/* ── Base container ──────────────────────────────────────── */
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--fry-f-component-tooltip-margin-gap-container, 16px);
+  min-width: var(--fry-f-component-tooltip-sizing-width-min, 240px);
+  max-width: var(--fry-f-component-tooltip-sizing-width-max, 312px);
+  padding: var(--fry-f-component-tooltip-margin-top, 16px)
+           var(--fry-f-component-tooltip-margin-right, 16px)
+           var(--fry-f-component-tooltip-margin-bottom, 16px)
+           var(--fry-f-component-tooltip-margin-left, 16px);
+  background-color: var(--fry-f-color-tooltip-background, rgb(28,31,40));
+  border-radius: var(--fry-f-component-tooltip-border-radius, 8px);
+  color: var(--fry-f-color-tooltip-content, rgb(255,255,255));
+  box-sizing: border-box;
+}
+
+/* ── Arrow ───────────────────────────────────────────────── */
+.tooltip__arrow {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.tooltip__arrow-img {
+  display: block;
+  width: 14px;
+  height: 8px;
+}
+
+/* LEFT — arrow on left side, pointing left */
+.tooltip--left .tooltip__arrow {
+  left: -9px;
+  width: 9px;
+  top: 0;
+  bottom: 0;
+}
+
+.tooltip--left .tooltip__arrow-img {
+  width: 8px;
+  height: 14px;
+  transform: rotate(90deg);
+}
+
+.tooltip--left.tooltip--left-start .tooltip__arrow {
+  top: 16px;
+  bottom: auto;
+  align-items: flex-start;
+}
+
+.tooltip--left.tooltip--left-center .tooltip__arrow {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.tooltip--left.tooltip--left-end .tooltip__arrow {
+  bottom: 16px;
+  top: auto;
+  align-items: flex-end;
+}
+
+/* TOP — arrow on top, pointing up */
+.tooltip--top .tooltip__arrow {
+  top: -9px;
+  left: 0;
+  right: 0;
+  height: 9px;
+  flex-direction: row;
+}
+
+.tooltip--top .tooltip__arrow-img {
+  width: 14px;
+  height: 8px;
+  transform: rotate(180deg);
+}
+
+.tooltip--top.tooltip--top-start .tooltip__arrow {
+  justify-content: flex-start;
+  padding-left: 16px;
+}
+
+.tooltip--top.tooltip--top-center .tooltip__arrow {
+  justify-content: center;
+}
+
+.tooltip--top.tooltip--top-end .tooltip__arrow {
+  justify-content: flex-end;
+  padding-right: 16px;
+}
+
+/* RIGHT — arrow on right side, pointing right */
+.tooltip--right .tooltip__arrow {
+  right: -9px;
+  width: 9px;
+  top: 0;
+  bottom: 0;
+}
+
+.tooltip--right .tooltip__arrow-img {
+  width: 8px;
+  height: 14px;
+  transform: rotate(-90deg);
+}
+
+.tooltip--right.tooltip--right-start .tooltip__arrow {
+  top: 16px;
+  bottom: auto;
+  align-items: flex-start;
+}
+
+.tooltip--right.tooltip--right-center .tooltip__arrow {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.tooltip--right.tooltip--right-end .tooltip__arrow {
+  bottom: 16px;
+  top: auto;
+  align-items: flex-end;
+}
+
+/* BOTTOM — arrow on bottom, pointing down */
+.tooltip--bottom .tooltip__arrow {
+  bottom: -9px;
+  left: 0;
+  right: 0;
+  height: 9px;
+  flex-direction: row;
+}
+
+.tooltip--bottom .tooltip__arrow-img {
+  width: 14px;
+  height: 8px;
+}
+
+.tooltip--bottom.tooltip--bottom-start .tooltip__arrow {
+  justify-content: flex-start;
+  padding-left: 16px;
+}
+
+.tooltip--bottom.tooltip--bottom-center .tooltip__arrow {
+  justify-content: center;
+}
+
+.tooltip--bottom.tooltip--bottom-end .tooltip__arrow {
+  justify-content: flex-end;
+  padding-right: 16px;
+}
+
+/* ── Close button wrapper ─────────────────────────────────── */
+.tooltip__close-wrapper {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+/* ── Content ─────────────────────────────────────────────── */
+.tooltip__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fry-f-component-tooltip-margin-gap-content, 4px);
+  width: 100%;
+  /* leave space for close button */
+  padding-right: 28px;
+}
+
+.tooltip__title {
+  font-size: var(--fry-f-component-tooltip-font-size-title, 16px);
+  line-height: var(--fry-f-component-tooltip-font-line-height-title, 24px);
+  font-weight: 600;
+  letter-spacing: var(--fry-f-text-style-letter-spacing, 0.2px);
+  margin: 0;
+  color: var(--fry-f-color-tooltip-content, white);
+}
+
+.tooltip__description {
+  font-size: var(--fry-f-component-tooltip-font-size-body, 14px);
+  line-height: var(--fry-f-component-tooltip-font-line-height-body, 20px);
+  font-weight: 400;
+  letter-spacing: var(--fry-f-text-style-letter-spacing, 0.2px);
+  margin: 0;
+  color: var(--fry-f-color-tooltip-content, white);
+}
+
+/* ── Button group ────────────────────────────────────────── */
+.tooltip__button-group {
+  display: flex;
+  gap: var(--fry-f-component-tooltip-margin-gap-container, 16px);
+  justify-content: flex-end;
+  width: 100%;
+}

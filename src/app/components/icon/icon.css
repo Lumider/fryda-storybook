@@ -1,0 +1,39 @@
+/* ─────────────────────────────────────────────────────────────
+   ICON — FrYDA v3 Design Tokens
+   Color: SIEMPRE currentColor (heredado del elemento padre via CSS)
+   Tamaños: tokens --fry-f-icon-width/height-s/m/l/xl
+───────────────────────────────────────────────────────────── */
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* color se hereda del padre — NO se define aquí */
+}
+
+:host svg {
+  display: block;
+}
+
+/* ── Tamaños via tokens FrYDA ────────────────────────────── */
+:host([size='s']) svg {
+  width: var(--fry-f-icon-width-s, 16px);
+  height: var(--fry-f-icon-height-s, 16px);
+}
+
+:host([size='m']) svg,
+:host(:not([size])) svg {
+  width: var(--fry-f-icon-width-m, 24px);
+  height: var(--fry-f-icon-height-m, 24px);
+}
+
+:host([size='l']) svg {
+  width: var(--fry-f-icon-width-l, 32px);
+  height: var(--fry-f-icon-height-l, 32px);
+}
+
+:host([size='xl']) svg {
+  width: var(--fry-f-icon-width-xl, 40px);
+  height: var(--fry-f-icon-height-xl, 40px);
+}
