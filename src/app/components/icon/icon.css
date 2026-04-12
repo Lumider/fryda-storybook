@@ -1,7 +1,8 @@
 /* ─────────────────────────────────────────────────────────────
-   ICON — FrYDA v3 Design Tokens
-   Color: SIEMPRE currentColor (heredado del elemento padre via CSS)
-   Tamaños: tokens --fry-f-icon-width/height-s/m/l/xl
+   ICON — FrYDA v3 Design Tokens (line icons)
+   Color:       SIEMPRE currentColor (heredado del padre via CSS)
+   Tamaños:     s=16px · m=24px · l=32px  (no escalar más allá de 32px)
+   Stroke:      --fry-f-icon-stroke-width (default 2) — controlable via CSS o @Input
 ───────────────────────────────────────────────────────────── */
 
 :host {
@@ -16,7 +17,12 @@
   display: block;
 }
 
-/* ── Tamaños via tokens FrYDA ────────────────────────────── */
+/* ── stroke-width via CSS custom property ────────────────── */
+:host svg path {
+  stroke-width: var(--fry-f-icon-stroke-width, 2);
+}
+
+/* ── Tamaños via tokens FrYDA (máx recomendado: 32px) ───── */
 :host([size='s']) svg {
   width: var(--fry-f-icon-width-s, 16px);
   height: var(--fry-f-icon-height-s, 16px);
@@ -31,9 +37,4 @@
 :host([size='l']) svg {
   width: var(--fry-f-icon-width-l, 32px);
   height: var(--fry-f-icon-height-l, 32px);
-}
-
-:host([size='xl']) svg {
-  width: var(--fry-f-icon-width-xl, 40px);
-  height: var(--fry-f-icon-height-xl, 40px);
 }

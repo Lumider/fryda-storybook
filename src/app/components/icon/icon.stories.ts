@@ -14,48 +14,67 @@ const meta: Meta<IconComponent> = {
     name: {
       control: 'select',
       options: ICON_NAMES,
-      description: 'Nombre del icono FrYDA v3',
+      description: 'Nombre del icono FrYDA v3 (line)',
       table: { defaultValue: { summary: 'check' } },
     },
     size: {
       control: 'select',
-      options: ['s', 'm', 'l', 'xl'],
-      description: 'Tamaño via tokens — s=16px m=24px l=32px xl=40px',
+      options: ['s', 'm', 'l'],
+      description: 'Tamaño via tokens — s=16px · m=24px · l=32px',
       table: { defaultValue: { summary: 'm' } },
+    },
+    strokeWidth: {
+      control: { type: 'number', min: 0.5, max: 3, step: 0.5 },
+      description: 'Grosor del trazo SVG. También vía CSS: `--fry-f-icon-stroke-width`',
+      table: { defaultValue: { summary: '2' } },
     },
   },
   args: {
     name: 'check',
     size: 'm',
+    strokeWidth: 2,
   },
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component: `
-**Icon** — librería de iconos FrYDA v3 (191 iconos).
+**Icon** — librería de iconos FrYDA v3 · line (193 iconos).
 
 ### Color — siempre \`currentColor\`
 El icono hereda el color del elemento padre via CSS. **No existe un prop \`color\`.**
 
 \`\`\`css
-/* Controla el color desde el padre: */
-.mi-contenedor { color: red; }    /* icono se vuelve rojo */
-.mi-boton      { color: white; }  /* icono se vuelve blanco */
+.mi-contenedor { color: #1c1f28; }   /* icono oscuro */
+.mi-boton      { color: white; }      /* icono blanco */
 \`\`\`
 
-### Tamaños
+### Tamaños recomendados
 | Prop | Tamaño | Token |
 |------|--------|-------|
 | \`s\` | 16×16px | \`--fry-f-icon-width-s\` |
 | \`m\` | 24×24px | \`--fry-f-icon-width-m\` |
 | \`l\` | 32×32px | \`--fry-f-icon-width-l\` |
-| \`xl\` | 40×40px | \`--fry-f-icon-width-xl\` |
+
+> ⚠️ No escalar más allá de 32px. Para íconos "feature" grandes, coloca el ícono \`m\` dentro de un contenedor con background.
+
+### Stroke width
+Controlable via prop o CSS custom property:
+
+\`\`\`html
+<!-- via prop -->
+<app-icon name="check" [strokeWidth]="1.5"></app-icon>
+
+<!-- via CSS (aplica a todos los íconos del contexto) -->
+<div style="--fry-f-icon-stroke-width: 1.5">
+  <app-icon name="check"></app-icon>
+</div>
+\`\`\`
 
 ### Uso
 \`\`\`html
 <app-icon name="check" size="m"></app-icon>
-<app-icon name="arrow-up-right" size="s"></app-icon>
+<app-icon name="arrow-up-right" size="s" [strokeWidth]="1.5"></app-icon>
 \`\`\`
         `,
       },
@@ -72,7 +91,7 @@ type Story = StoryObj<IconComponent>;
 
 export const Playground: Story = {
   name: '⚡ Playground',
-  args: { name: 'check', size: 'm' },
+  args: { name: 'check', size: 'm', strokeWidth: 2 },
 };
 
 // ─────────────────────────────────────────────────────────────
@@ -94,17 +113,74 @@ export const Sizes: Story = {
         </div>
         <div style="display:flex; flex-direction:column; align-items:center; gap:8px; color:#1c1f28;">
           <app-icon name="check" size="l"></app-icon>
-          <span style="font-size:11px; color:#888;">l · 32px</span>
-        </div>
-        <div style="display:flex; flex-direction:column; align-items:center; gap:8px; color:#1c1f28;">
-          <app-icon name="check" size="xl"></app-icon>
-          <span style="font-size:11px; color:#888;">xl · 40px</span>
+          <span style="font-size:11px; color:#888;">l · 32px ← máx recomendado</span>
         </div>
       </div>
     `,
     moduleMetadata: { imports: [IconComponent] },
   }),
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        story: 'Rango válido según las buenas prácticas de iconografía: **16–32px**. No escalar más allá de `l` para evitar que el stroke se vea grueso y poco refinado.',
+      },
+    },
+  },
+};
+
+// ─────────────────────────────────────────────────────────────
+//  STROKE WIDTH
+// ─────────────────────────────────────────────────────────────
+
+export const StrokeWidth: Story = {
+  name: 'Stroke Width',
+  render: () => ({
+    template: `
+      <div style="display:flex; align-items:center; gap:32px; padding:24px; color:#1c1f28;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <app-icon name="check" size="m" [strokeWidth]="1"></app-icon>
+          <span style="font-size:11px; color:#888;">1 · thin</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <app-icon name="check" size="m" [strokeWidth]="1.5"></app-icon>
+          <span style="font-size:11px; color:#888;">1.5 · light</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <app-icon name="check" size="m" [strokeWidth]="2"></app-icon>
+          <span style="font-size:11px; color:#888; font-weight:700;">2 · regular ✓</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <app-icon name="check" size="m" [strokeWidth]="2.5"></app-icon>
+          <span style="font-size:11px; color:#888;">2.5 · semibold</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <app-icon name="check" size="m" [strokeWidth]="3"></app-icon>
+          <span style="font-size:11px; color:#888;">3 · bold</span>
+        </div>
+      </div>
+    `,
+    moduleMetadata: { imports: [IconComponent] },
+  }),
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        story: `El grosor del trazo es configurable via **prop** o **CSS custom property**. El valor por defecto de FrYDA es \`2\`.
+
+\`\`\`html
+<!-- Via prop (por icono) -->
+<app-icon name="check" [strokeWidth]="1.5"></app-icon>
+
+<!-- Via CSS (aplica a todos los íconos del contexto) -->
+<div style="--fry-f-icon-stroke-width: 1.5">
+  <app-icon name="check"></app-icon>
+  <app-icon name="user"></app-icon>
+</div>
+\`\`\``,
+      },
+    },
+  },
 };
 
 // ─────────────────────────────────────────────────────────────

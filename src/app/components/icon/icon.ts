@@ -8,14 +8,23 @@ import { ICONS, IconData, IconName } from './icons.registry';
   imports: [CommonModule],
   templateUrl: './icon.html',
   styleUrl: './icon.css',
-  host: { '[attr.size]': 'size' },
+  host: {
+    '[attr.size]': 'size',
+    '[style.--fry-f-icon-stroke-width]': 'strokeWidth',
+  },
 })
 export class IconComponent implements OnChanges {
-  /** Nombre del icono — uno de los 191 iconos FrYDA v3 */
+  /** Nombre del icono — FrYDA v3 General (line) */
   @Input() name: IconName = 'check';
 
-  /** Tamaño usando tokens FrYDA: s=16px m=24px l=32px xl=40px */
-  @Input() size: 's' | 'm' | 'l' | 'xl' = 'm';
+  /** Tamaño via tokens FrYDA: s=16px · m=24px · l=32px
+   *  ⚠️ No escalar más allá de 32px — usar un contenedor si necesitas íconos "feature" */
+  @Input() size: 's' | 'm' | 'l' = 'm';
+
+  /** Grosor del trazo SVG — default 2 (igual que la especificación FrYDA).
+   *  Otras opciones habituales: 1 (thin) · 1.5 (light) · 2.5 (bold)
+   *  También controlable vía CSS: app-icon { --fry-f-icon-stroke-width: 1.5 } */
+  @Input() strokeWidth: number = 2;
 
   // ⚠️ NO hay @Input() color — el color SIEMPRE se hereda via CSS currentColor del elemento padre
 
