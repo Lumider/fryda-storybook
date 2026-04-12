@@ -1,0 +1,20 @@
+{
+  "name": "fryda-ui",
+  "version": "1.0.0",
+  "description": "FrYDA v3 — Design System UI Component Library for Angular",
+  "keywords": ["angular", "design-system", "fryda", "components", "ui"],
+  "author": "Lumider",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lumider/fryda-storybook.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/core": "^21.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

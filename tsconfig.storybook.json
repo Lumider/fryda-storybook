@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.app.json",
+  "include": [
+    "src/**/*.ts",
+    "projects/fryda-ui/src/**/*.ts",
+    ".storybook/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "projects/fryda-ui/src/**/*.spec.ts"
+  ]
+}
