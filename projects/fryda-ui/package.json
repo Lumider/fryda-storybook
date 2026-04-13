@@ -1,8 +1,14 @@
 {
   "name": "@lumider/fryda-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "FrYDA v3 — Design System UI Component Library for Angular",
-  "keywords": ["angular", "design-system", "fryda", "components", "ui"],
+  "keywords": [
+    "angular",
+    "design-system",
+    "fryda",
+    "components",
+    "ui"
+  ],
   "author": "Lumider",
   "license": "MIT",
   "repository": {
