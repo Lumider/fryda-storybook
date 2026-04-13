@@ -1,64 +1,204 @@
-# FrydaUi
+# @lumider/fryda-ui
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+FrYDA v3 — Design System UI Component Library for Angular.
 
-## Code scaffolding
+## Links
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Storybook** → https://lumider.github.io/fryda-storybook/
+- **npm** → https://www.npmjs.com/package/@lumider/fryda-ui
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the library, run:
+## Installation
 
 ```bash
-ng build fryda-ui
+npm install @lumider/fryda-ui
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+### Setup (one time)
 
-### Publishing the Library
+Add the design tokens to your project's global stylesheet (`src/styles.css` or `src/styles.scss`):
 
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/fryda-ui
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```css
+@import '@lumider/fryda-ui/tokens';
 ```
 
-## Running end-to-end tests
+This is required once per project. The tokens define colors, spacing, typography, and sizing used by all components.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
+## Usage
+
+Import the components you need directly in your Angular standalone component:
+
+```typescript
+import { ButtonComponent, IconComponent } from '@lumider/fryda-ui';
+
+@Component({
+  standalone: true,
+  imports: [ButtonComponent, IconComponent],
+  template: `
+    <app-button label="Guardar" hierarchy="primary" size="medium" />
+    <app-icon name="check" size="m" />
+  `,
+})
+export class MyComponent {}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Components
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Button `<app-button>`
+
+```html
+<app-button
+  label="Guardar"
+  hierarchy="primary"
+  size="medium"
+/>
+```
+
+| Input | Type | Default |
+|-------|------|---------|
+| `label` | `string` | `''` |
+| `hierarchy` | `primary` \| `secondary` \| `ghost` \| `link` \| `destructive` | `primary` |
+| `variant` | `default` \| `hover` \| `pressed` \| `focus` \| `disabled` \| `loading` | `default` |
+| `size` | `small` \| `medium` \| `large` | `medium` |
+| `mode` | `default` \| `inverse` | `default` |
+
+---
+
+### Button Icon `<app-button-icon>`
+
+```html
+<app-button-icon
+  hierarchy="primary"
+  icon="close"
+  ariaLabel="Cerrar"
+/>
+```
+
+| Input | Type | Default |
+|-------|------|---------|
+| `hierarchy` | `primary` \| `secondary` \| `ghost` \| `link` \| `destructive` | `primary` |
+| `icon` | `arrow` \| `close` | `close` |
+| `ariaLabel` | `string` | `''` |
+| `variant` | `default` \| `hover` \| `pressed` \| `focus` \| `disabled` \| `loading` | `default` |
+| `mode` | `default` \| `inverse` | `default` |
+
+---
+
+### Checkbox `<app-checkbox>`
+
+```html
+<app-checkbox label="Acepto términos" value="unselected" />
+```
+
+| Input | Type | Default |
+|-------|------|---------|
+| `value` | `unselected` \| `selected` \| `indeterminate` | `unselected` |
+| `state` | `default` \| `hover` \| `pressed` \| `focus` \| `disabled` | `default` |
+| `label` | `string` | `''` |
+
+| Output | Type |
+|--------|------|
+| `valueChange` | `EventEmitter<'unselected' \| 'selected' \| 'indeterminate'>` |
+
+---
+
+### Radio Button `<app-radio-button>`
+
+```html
+<app-radio-button name="grupo" label="Opción A" [checked]="true" />
+<app-radio-button name="grupo" label="Opción B" [checked]="false" />
+```
+
+| Input | Type | Default |
+|-------|------|---------|
+| `name` | `string` | `''` |
+| `label` | `string` | `''` |
+| `checked` | `boolean` | `false` |
+| `state` | `default` \| `hover` \| `pressed` \| `focus` \| `disabled` | `default` |
+
+| Output | Type |
+|--------|------|
+| `checkedChange` | `EventEmitter<boolean>` |
+
+---
+
+### Icon `<app-icon>`
+
+```html
+<app-icon name="check" size="m" />
+<app-icon name="settings" size="l" [strokeWidth]="1.5" />
+```
+
+| Input | Type | Default |
+|-------|------|---------|
+| `name` | `IconName` (191 opciones) | `check` |
+| `size` | `s` \| `m` \| `l` | `m` |
+| `strokeWidth` | `number` | `2` |
+
+Tamaños: `s` = 16px · `m` = 24px · `l` = 32px
+
+El color se hereda del CSS `color` del elemento padre (`currentColor`).
+
+---
+
+### Tooltip `<app-tooltip>`
+
+```html
+<app-tooltip
+  side="bottom"
+  align="center"
+  title="Información"
+  description="Texto del tooltip."
+  [showTitle]="true"
+  [showButtonGroup]="true"
+  primaryLabel="Aceptar"
+/>
+```
+
+| Input | Type | Default |
+|-------|------|---------|
+| `side` | `top` \| `right` \| `bottom` \| `left` | `bottom` |
+| `align` | `start` \| `center` \| `end` | `center` |
+| `title` | `string` | `''` |
+| `description` | `string` | `''` |
+| `showTitle` | `boolean` | `false` |
+| `showButtonGroup` | `boolean` | `false` |
+| `showButtonSecondary` | `boolean` | `false` |
+| `showClose` | `boolean` | `false` |
+| `primaryLabel` | `string` | `''` |
+| `secondaryLabel` | `string` | `''` |
+
+| Output | Type |
+|--------|------|
+| `closed` | `EventEmitter<void>` |
+| `primaryClick` | `EventEmitter<void>` |
+| `secondaryClick` | `EventEmitter<void>` |
+
+---
+
+### Banner `<app-banner>`
+
+```html
+<app-banner intent="success" text="Cambios guardados correctamente." />
+```
+
+| Input | Type | Default |
+|-------|------|---------|
+| `intent` | `info` \| `success` \| `warning` \| `error` \| `neutral` | `info` |
+| `text` | `string` | `''` |
+
+---
+
+## Peer Dependencies
+
+```json
+{
+  "@angular/common": "^21.2.0",
+  "@angular/core": "^21.2.0"
+}
+```

@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# @lumider/fryda-ui
+
+FrYDA v3 — Design System UI Component Library for Angular.
+
+## Installation
+
+```bash
+npm install @lumider/fryda-ui
+```
+
+### Setup (one time)
+
+Add the design tokens to your project's global stylesheet (`src/styles.css`):
+
+```css
+@import '@lumider/fryda-ui/tokens';
+```
+
+This is required once per project. The tokens define colors, spacing, typography,
+and sizing used by all components.
+
+---
+
+## Usage
+
+Import components directly in your Angular standalone component:
+
+```typescript
+import { ButtonComponent, IconComponent } from '@lumider/fryda-ui';
+
+@Component({
+  standalone: true,
+  imports: [ButtonComponent, IconComponent],
+  template: `
+    <app-button label="Guardar" hierarchy="primary" size="medium" />
+    <app-icon name="check" size="m" />
+  `,
+})
+export class MyComponent {}
+```
+
+---
+
+## Links
+
+- [npm](https://www.npmjs.com/package/@lumider/fryda-ui)
+- [GitHub](https://github.com/Lumider/fryda-storybook)

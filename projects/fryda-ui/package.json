@@ -1,6 +1,6 @@
 {
   "name": "@lumider/fryda-ui",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "FrYDA v3 — Design System UI Component Library for Angular",
   "keywords": [
     "angular",
@@ -22,5 +22,13 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "exports": {
+    "./tokens": {
+      "default": "./src/tokens.css"
+    },
+    "./src/tokens.css": {
+      "default": "./src/tokens.css"
+    }
+  }
 }
