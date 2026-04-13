@@ -1,5 +1,5 @@
 {
-  "name": "fryda-ui",
+  "name": "@lumider/fryda-ui",
   "version": "1.0.0",
   "description": "FrYDA v3 — Design System UI Component Library for Angular",
   "keywords": ["angular", "design-system", "fryda", "components", "ui"],
