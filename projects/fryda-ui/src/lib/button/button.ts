@@ -24,6 +24,7 @@ export class ButtonComponent {
       'btn',
       `btn-${this.hierarchy}`,
       `btn-${this.variant}`,
+      `btn-${this.size}`,
       this.mode === 'inverse' ? 'btn-inverse' : '',
     ]
       .filter(Boolean)

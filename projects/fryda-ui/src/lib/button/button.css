@@ -25,6 +25,14 @@
   text-decoration: none;
 }
 
+/* Sizes */
+.btn-small  { padding: 4px 12px;  font-size: 13px; line-height: 20px; }
+.btn-medium { padding: var(--fry-f-component-button-margin-top)
+                       var(--fry-f-component-button-margin-margin-right-text)
+                       var(--fry-f-component-button-margin-bottom)
+                       var(--fry-f-component-button-margin-margin-left-text); }
+.btn-large  { padding: 12px 24px; font-size: 18px; line-height: 28px; }
+
 /* Focus ring accesible — teclado */
 .btn:focus-visible {
   outline: var(--fry-f-effect-focus-border, 2px) solid var(--fry-f-effect-focus-ring);
